@@ -4482,6 +4482,15 @@ section.warm { background: var(--bg-warm); }
    ============================================================ */
 
 </style>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ui-sdk/web@0.1.0-beta.1/browser/web.js"></script>
+<style>
+.nav-movil{display:none}
+.nav-movil-boton{font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid var(--text-muted);background:var(--bg-elevated);color:var(--text)}
+.nav-movil-lista{display:grid;gap:2px;min-width:180px;padding:6px;border-radius:12px;background:var(--bg-elevated);color:var(--text);box-shadow:0 10px 30px rgba(15,42,78,.18);border:1px solid var(--bg-warm)}
+.nav-movil-lista ui-menu-item{padding:9px 12px;border-radius:8px;cursor:pointer}
+.nav-movil-lista ui-menu-item[data-highlighted]{background:var(--bg-warm)}
+@media (max-width:760px){.site-nav{display:none!important}.nav-movil{display:block}}
+</style>
 </head>
 <body>
 
@@ -4494,6 +4503,18 @@ section.warm { background: var(--bg-warm); }
       <span>Themis</span>
       <span>ecosystem · v2</span>
     </a>
+    <ui-menu class="nav-movil">
+      <ui-menu-trigger><button type="button" class="nav-movil-boton">Secciones</button></ui-menu-trigger>
+      <ui-menu-content hidden class="nav-movil-lista">
+        <ui-menu-item value="vision">Visión</ui-menu-item>
+        <ui-menu-item value="ejes">Ejes</ui-menu-item>
+        <ui-menu-item value="elenco">Elenco</ui-menu-item>
+        <ui-menu-item value="ulises">Ulises</ui-menu-item>
+        <ui-menu-item value="producto">Producto</ui-menu-item>
+        <ui-menu-item value="stack">Stack</ui-menu-item>
+        <ui-menu-item value="roadmap">Roadmap</ui-menu-item>
+      </ui-menu-content>
+    </ui-menu>
     <nav class="site-nav">
       <a href="#vision">Visión</a>
       <a href="#ejes">Ejes</a>
@@ -7155,5 +7176,8 @@ section.warm { background: var(--bg-warm); }
   </div>
 </footer>
 
+<script type="module">
+document.querySelector('.nav-movil').addEventListener('action',e=>{const v=e.detail&&e.detail.value;const t=v&&document.getElementById(v);if(t)t.scrollIntoView({behavior:'smooth'});});
+</script>
 </body>
 </html>
